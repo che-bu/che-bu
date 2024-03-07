@@ -1,100 +1,54 @@
-## Что нужно сделать - https://qastudio.notion.site/SQL-1459cf7d33c64a0a872e80459d3c9aec
+## Что нужно сделать 
+
+## Доступ в базу данных
+
+Адрес: [https://metabase.qastudio-monitor.com](https://metabase.qastudio-monitor.com/)
+Логин: student@qa.studio
+Пароль: iloveqa1
 
 Задания для базы данных qastudio
 
 1. Выведи имя и фамилию всех сотрудников с возрастом > 24 лет в Москве
-    - Как выглядит итоговая выдача (раскрыть)
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bc520533-b6a8-43bb-b380-f1586ddf632b/Untitled.png)
+    1. SELECT name, surname FROM staff WHERE city = 'Moscow' AND age > 24;
         
 2. Выведи имя и фамилию всех сотрудников, отсортированных от младших к старшим
-    - Как выглядит итоговая выдача (раскрыть)
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3e953996-0114-4bdc-b18c-8e765c9aa965/Untitled.png)
+   2. SELECT name, surname FROM staff ORDER BY age ASC;
         
 3. Выведи возраст всех сотрудников с профессией *`qa_engineer`*
-    - Как выглядит итоговая выдача (раскрыть)
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b64a1fdf-667d-4910-afee-fcf54aead236/Untitled.png)
+    3. SELECT age FROM staff RIGHT JOIN positions ON staff.position_id = positions.id;
         
 4. Выведи имя и фамилию всех `frontend_dev` с лимитом строк в 20
-    - Как выглядит итоговая выдача (раскрыть)
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e0ecb0d0-0ba8-49d3-bc95-7d891a0af4c8/Untitled.png)
+   4. SELECT name, surname FROM staff RIGHT JOIN positions ON staff.position_id = positions.id WHERE position_name = 'frontend_dev' LIMIT 20;
         
 5. Выведи какой компьютер у Анастасии Морозовой (нужно использовать двойной `Join`)
-    - Как выглядит итоговая выдача (раскрыть)
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c6aabad0-2889-4157-a6fb-a4ba3113cfe3/Untitled.png)
+    5. SELECT computer_name FROM staff LEFT JOIN positions ON staff.position_id = positions.id LEFT JOIN computers ON positions.computer_id = computers.id WHERE name = 'anastasia' AND surname = 'morozova';
         
 6. Сколько в компании всего сотрудников работает в Москве?
-    - Как выглядит итоговая выдача (раскрыть)
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/823d3511-e9e3-42bb-9ba1-d71c7efc964a/Untitled.png)
+    6. SELECT count(city) FROM staff WHERE city = 'Moscow';
         
 7. Какая зарплата у каждого сотрудника. В результирующей таблице нужно вывести два столбика — имя и зарплата
-    - Как выглядит итоговая выдача (раскрыть)
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/277383a5-6b3e-460f-a379-17a660cfe552/Untitled.png)
+    7. SELECT name, salary FROM staff INNER JOIN positions ON staff.position_id = positions.id;
         
 8. Какая общая зарплата всех сотрудников, которые работают в Москве?
-    - Как выглядит итоговая выдача (раскрыть)
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3a83239b-8b10-4b54-ba6d-5790dcff5c5b/Untitled.png)
+    8. SELECT SUM (salary) FROM staff FULL JOIN positions ON staff.position_id = positions.id WHERE city ='Moscow';
         
 9. Выведи суммы зарплат, разбитые по городам.
 В результирующей таблице хочу увидеть четыре города и сумму всех зарплат сотрудников в этом городе.
-Нужно погуглить про оператор *`group by`*
-    - Как выглядит итоговая выдача (раскрыть)
-        
-        ![group by SQL.webp](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9c938fb1-b08d-4157-a72e-9808f6cb5b1a/group_by_SQL.webp)
+    9. SELECT city, SUM (salary) FROM staff LEFT JOIN positions ON staff.position_id = positions.id GROUP BY city;
         
 10. Выведи список уникальных городов, где есть сотрудники.
 В результирующей таблице хочу увидеть четыре города.
 Нужно погуглить про параметр *`distinct`*
-    - Как выглядит итоговая выдача (раскрыть)
-        
-        ![distinct SQL.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a2fd3791-a313-4777-b1d0-c2b6e4a1fc65/distinct_SQL.png)
+    10. SELECT DISTINCT city FROM staff;
         
 11. Выведи список уникальных городов, где в названии есть буква *k*. В результирующей таблице хочу увидеть два города.
 Нужно погуглить про оператор *`like`*
-    - Как выглядит итоговая выдача (раскрыть)
-        
-        ![[sql] like.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c0615f9f-79c7-4976-946e-b79791a22b07/sql_like.png)
+    11. SELECT DISTINCT city FROM staff WHERE city LIKE '%k%';
         
 12. Выведи названия должностей, у которых зарплата между 1500 и 2200, используя оператор `between`
-    - Как выглядит итоговая выдача (раскрыть)
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/21f7aa96-cf06-41d9-9f04-b72661f7ef92/Untitled.png)
+    12. SELECT position_name FROM positions WHERE salary BETWEEN 1500 AND 2200;
         
 13. Выведи Имя и Фамилию каждого сотрудника вместе с их Должностью. 
 Важно: есть две должности, на которых никто не работает. 
-Нужно их тоже получить. Необходимо погуглить про параметр `left join` и `right join`
+    13. SELECT name, surname, position_name FROM staff RIGHT JOIN positions ON staff.position_id = positions.id;
 
-
-
-1. SELECT name, surname FROM staff WHERE city = 'Moscow' AND age > 24;
-
-2. SELECT name, surname FROM staff ORDER BY age ASC;
-
-3. SELECT age FROM staff RIGHT JOIN positions ON staff.position_id = positions.id;
-
-4. SELECT name, surname FROM staff RIGHT JOIN positions ON staff.position_id = positions.id WHERE position_name = 'frontend_dev' LIMIT 20;
-
-5. SELECT computer_name FROM staff LEFT JOIN positions ON staff.position_id = positions.id LEFT JOIN computers ON positions.computer_id = computers.id WHERE name = 'anastasia' AND surname = 'morozova';
-
-6. SELECT count(city) FROM staff WHERE city = 'Moscow';
-
-7. SELECT name, salary FROM staff INNER JOIN positions ON staff.position_id = positions.id;
-
-8. SELECT SUM (salary) FROM staff FULL JOIN positions ON staff.position_id = positions.id WHERE city ='Moscow';
-
-9. SELECT city, SUM (salary) FROM staff LEFT JOIN positions ON staff.position_id = positions.id GROUP BY city;
-
-10. SELECT DISTINCT city FROM staff;
-
-11. SELECT DISTINCT city FROM staff WHERE city LIKE '%k%';
-
-12. SELECT position_name FROM positions WHERE salary BETWEEN 1500 AND 2200;
-
-13. SELECT name, surname, position_name FROM staff RIGHT JOIN positions ON staff.position_id = positions.id;
