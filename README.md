@@ -6,17 +6,17 @@
 
 ## [My CV](https://drive.google.com/file/d/1wB6gwR8Yj_CGPCjD3nnjLaVkv85X9PxG/view?usp=sharing)
 
-
-
-![[Header](https://img.shields.io/badge/LinkedIn-090909?style=for-the-badge&logo=linkedin&logoColor=0a66c2)](https://www.linkedin.com/in/evgenia-antonova-942890297/)
-![[Header](https://img.shields.io/badge/t.me-090909?style=for-the-badge&logo=t.me&logoColor=f1f3f4)](https://t.me/sailormultitool)
-  <!--<div id="badges">
-    <a href="https://www.linkedin.com/in/evgenia-antonova-942890297/" target="_blank">
+ <a href="https://www.linkedin.com/in/evgenia-antonova-942890297/" target="_blank">
       <img src="https://cdn-icons-png.flaticon.com/512/2504/2504799.png" width="40" height="40" alt="linkedin" />
     </a>
     <a href="https://t.me/sailormultitool" target="_blank">
       <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="40" height="40" alt="telegram" />
     </a>
+
+<!--![[Header](https://img.shields.io/badge/LinkedIn-090909?style=for-the-badge&logo=linkedin&logoColor=0a66c2)](https://www.linkedin.com/in/evgenia-antonova-942890297/)
+![[Header](https://img.shields.io/badge/t.me-090909?style=for-the-badge&logo=t.me&logoColor=f1f3f4)](https://t.me/sailormultitool)-->
+ <!--<div id="badges">
+   
   </div>-->
 
 ---
